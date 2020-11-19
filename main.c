@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 void mainMenu(){
     char *menu="\n---------------Taller---------------\n "
                "1.Convertir nombre propio\n "
@@ -16,6 +17,7 @@ void mainMenu(){
         system("cls");
         printf("%s",menu);
         scanf("%d",&option);
+
         fflush(stdin);
         switch (option) {
             case 1 :;
@@ -35,10 +37,13 @@ void mainMenu(){
 
             case 6 :;
             break;
+
             case 7 :;
             break;
+
             case 8 :;
             break;
+
             case 9 :;
             break;
         }
