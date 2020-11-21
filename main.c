@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int encrypted(char string[]){
+    
+}
+void encryptString(){
+    char string[4];
+    printf("Digite lo que quiere digitar: \n");
+    scanf("%s",&string);
+}
 void mainMenu(){
     char *menu="\n---------------Taller---------------\n "
                "1.Convertir nombre propio\n "
@@ -17,35 +25,36 @@ void mainMenu(){
         system("cls");
         printf("%s",menu);
         scanf("%d",&option);
-
         fflush(stdin);
         switch (option) {
             case 1 :;
-            break;
+                break;
 
             case 2 :;
-            break;
+                break;
 
-            case 3 :;
-            break;
+            case 3 :
+                encryptString();
+                system("pause");
+                break;
 
             case 4 :;
-            break;
+                break;
 
             case 5 :;
-            break;
+                break;
 
             case 6 :;
-            break;
+                break;
 
             case 7 :;
-            break;
+                break;
 
             case 8 :;
-            break;
+                break;
 
             case 9 :;
-            break;
+                break;
         }
     }while(option!=10);
     printf("Cerrando ....");
