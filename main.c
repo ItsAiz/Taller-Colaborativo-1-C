@@ -65,7 +65,7 @@ void mainMenu(){
                 break;
         }
     }while(option!=10);
-    printf("Cerrando ....");
+    printf("Cerrando ...");
 }
 int main() {
     mainMenu();
