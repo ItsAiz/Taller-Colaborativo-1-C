@@ -13,7 +13,6 @@ void encryptString(){
 }
 void removeCharacter(const char *string, char character){
     int j=0;
-    printf("%s",string);
     char stringTw[strlen(string)];
     for (int i = 0; i < strlen(string); ++i) {
         if(string[i]!=character){
@@ -22,7 +21,7 @@ void removeCharacter(const char *string, char character){
         }
     }
     stringTw[j]='\0';
-    printf("La cadena sin el caracter %c es :%s\n tamanho: %d \n",character,stringTw,strlen(stringTw));
+    printf("La cadena sin el caracter %c es :%s \n",character,stringTw);
 }
 void deleteCharacter(){
     char string[100];
@@ -32,7 +31,7 @@ void deleteCharacter(){
     fgets(string,100,stdin);
     printf("Digite el caracter que desea borrar: \n");
     scanf("%c",&character);
-    printf("Cadena inicial: \n%s tamaño: %d \n ",string,strlen(string));
+    printf("Cadena inicial: %s\n ",string);
     removeCharacter(string, character);
 }
 void mainMenu(){
