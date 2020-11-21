@@ -1,13 +1,39 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <conio.h>
 
 int encrypted(char string[]){
     
 }
 void encryptString(){
     char string[4];
-    printf("Digite lo que quiere digitar: \n");
+    printf("Digite lo que quiere encriptar \n");
     scanf("%s",&string);
+}
+void removeCharacter(const char *string, char character){
+    int j=0;
+    printf("%s",string);
+    char stringTw[strlen(string)];
+    for (int i = 0; i < strlen(string); ++i) {
+        if(string[i]!=character){
+            stringTw[j]=string[i];
+            j++;
+        }
+    }
+    stringTw[j]='\0';
+    printf("La cadena sin el caracter %c es :%s\n tamanho: %d \n",character,stringTw,strlen(stringTw));
+}
+void deleteCharacter(){
+    char string[100];
+    char character;
+    printf("---------------Borrar caracter de una cadena---------------\n");
+    printf("Digite una cadena: \n");
+    fgets(string,100,stdin);
+    printf("Digite el caracter que desea borrar: \n");
+    scanf("%c",&character);
+    printf("Cadena inicial: \n%s tamaño: %d \n ",string,strlen(string));
+    removeCharacter(string, character);
 }
 void mainMenu(){
     char *menu="\n---------------Taller---------------\n "
@@ -48,7 +74,7 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 6 :;
+            case 6 :deleteCharacter();
                 system("pause");
                 break;
 
