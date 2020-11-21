@@ -28,9 +28,11 @@ void mainMenu(){
         fflush(stdin);
         switch (option) {
             case 1 :;
+                system("pause");
                 break;
 
             case 2 :;
+                system("pause");
                 break;
 
             case 3 :
@@ -39,21 +41,27 @@ void mainMenu(){
                 break;
 
             case 4 :;
+                system("pause");
                 break;
 
             case 5 :;
+                system("pause");
                 break;
 
             case 6 :;
+                system("pause");
                 break;
 
             case 7 :;
+                system("pause");
                 break;
 
             case 8 :;
+                system("pause");
                 break;
 
             case 9 :;
+                system("pause");
                 break;
         }
     }while(option!=10);
