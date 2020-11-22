@@ -2,14 +2,72 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
-
 int encrypted(char string[]){
-    
+
 }
 void encryptString(){
     char string[4];
     printf("Digite lo que quiere encriptar \n");
     scanf("%s",&string);
+}
+
+int coincidence(char character,const char *stringTwo){
+    int accumulator=0;
+    for (int i = 0; i <strlen(stringTwo); ++i) {
+        if(character==stringTwo[i]){
+            accumulator++;
+        }
+    }
+    return accumulator > 0 ? 1 : 0;
+}
+void deleteCharactersLeft(char *string,const char *stringTwo){
+    int accumulator=0;
+    for (int j = 0; j <strlen(string)-2 ; ++j) {
+        if(coincidence(string[j],stringTwo)==1){
+            string[j]=' ';
+            accumulator++;
+        }else{
+            break;
+        }
+    }
+    if(accumulator>0){
+        printf("%s\n",string);
+    }else{
+        printf("%s \n",string);
+    }
+}
+void deleteCharactersRight(char *string,const char *stringTwo){
+    int accumulator=0;
+    for (int i = strlen(string)-2; i >= 0; --i) {
+        if(coincidence(string[i],stringTwo)==1){
+            string[i]=' ';
+            accumulator++;
+        }else{
+            break;
+        }
+    }
+    if(accumulator>0){
+        printf("%s\n",string);
+    }else{
+        printf("%s \n",string);
+    }
+}
+void deleteCharactersRightOrLeft(){
+    int option=0;
+    char string[100];
+    char stringTwo[100];
+    printf("---------------Borrar caracteres izquierda o derecha---------------\n");
+    printf("Digite una cadena: \n");
+    fgets(string,100,stdin);
+    printf("Digite una segunda cadena: \n");
+    fgets(stringTwo,100,stdin);
+    printf("Digite 1.Derecha 2.Izquierda\n");
+    scanf("%d",&option);
+    if(option==1){
+        deleteCharactersRight(string,stringTwo);
+    }else if(option==2){
+        deleteCharactersLeft(string,stringTwo);
+    }
 }
 void removeCharacter(const char *string, char character){
     int j=0;
@@ -42,7 +100,7 @@ void mainMenu(){
                "4.Desencriptar cadena \n 5.Llenar caracteres por izquierda o derecha \n "
                "6.Borrar caracteres de una cadena \n 7.Interseccion \n"
                " 8.Diferencia entre dos cadenas \n"
-               " 9.Borrar aracteres izquierda o derecha \n"
+               " 9.Borrar caracteres izquierda o derecha \n"
                " 10.Salir \n"
                "-----------------------------------\n";
     int option;
@@ -85,7 +143,7 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 9 :;
+            case 9 : deleteCharactersRightOrLeft();
                 system("pause");
                 break;
         }
@@ -94,5 +152,6 @@ void mainMenu(){
 }
 int main() {
     mainMenu();
+    //deleteCharactersRightOrLeft();
     return 0;
 }
