@@ -21,7 +21,8 @@ int coincidence(char character,const char *stringTwo){
     return accumulator > 0 ? 1 : 0;
 }
 void deleteCharactersLeft(char *string,const char *stringTwo){
-    int accumulator=0;
+    int accumulator=0,k=0;
+    char res[100];
     for (int j = 0; j <strlen(string)-2 ; ++j) {
         if(coincidence(string[j],stringTwo)==1){
             string[j]=' ';
@@ -31,13 +32,21 @@ void deleteCharactersLeft(char *string,const char *stringTwo){
         }
     }
     if(accumulator>0){
-        printf("%s\n",string);
+        for (int i = 0; i <strlen(string); ++i) {
+            if(string[i]!=' '){
+                res[k]=string[i];
+                k++;
+            }
+        }
+        res[k]='\0';
+        printf("%s\n",res);
     }else{
         printf("%s \n",string);
     }
 }
 void deleteCharactersRight(char *string,const char *stringTwo){
-    int accumulator=0;
+    int accumulator=0,k=0;
+    char res[100];
     for (int i = strlen(string)-2; i >= 0; --i) {
         if(coincidence(string[i],stringTwo)==1){
             string[i]=' ';
@@ -47,6 +56,13 @@ void deleteCharactersRight(char *string,const char *stringTwo){
         }
     }
     if(accumulator>0){
+        for (int i = 0; i <strlen(string) ; ++i) {
+            if(string[i]!=' '){
+                res[k]=string[i];
+                k++;
+            }
+        }
+        res[k]='\0';
         printf("%s\n",string);
     }else{
         printf("%s \n",string);
