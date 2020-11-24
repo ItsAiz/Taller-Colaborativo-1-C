@@ -168,6 +168,5 @@ void mainMenu(){
 }
 int main() {
     mainMenu();
-    //deleteCharactersRightOrLeft();
     return 0;
 }
