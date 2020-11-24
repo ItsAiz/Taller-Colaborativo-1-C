@@ -45,28 +45,14 @@ void deleteCharactersLeft(char *string,const char *stringTwo){
     }
 }
 void deleteCharactersRight(char *string,const char *stringTwo){
-    int accumulator=0,k=0;
-    char res[100];
     for (int i = strlen(string)-2; i >= 0; --i) {
         if(coincidence(string[i],stringTwo)==1){
             string[i]=' ';
-            accumulator++;
         }else{
             break;
         }
     }
-    if(accumulator>0){
-        for (int i = 0; i <strlen(string) ; ++i) {
-            if(string[i]!=' '){
-                res[k]=string[i];
-                k++;
-            }
-        }
-        res[k]='\0';
-        printf("%s\n",string);
-    }else{
-        printf("%s \n",string);
-    }
+    printf("%s\n",string);
 }
 void deleteCharactersRightOrLeft(){
     int option=0;
