@@ -86,11 +86,14 @@ void removeCharacter(const char *string, char character){
 void deleteCharacter(){
     char string[100];
     char character;
-    printf("---------------Borrar caracter de una cadena---------------\n");
-    printf("Digite una cadena: \n");
-    fgets(string,100,stdin);
-    printf("Digite el caracter que desea borrar: \n");
-    scanf("%c",&character);
+    do{
+        printf("---------------Borrar caracter de una cadena---------------\n");
+        printf("Digite una cadena: \n");
+        fgets(string,100,stdin);
+        printf("Digite el caracter que desea borrar: \n");
+        scanf("%c",&character);
+        fflush(stdin);
+    }while(strlen(string)==1 || character==' ');
     printf("Cadena inicial: %s\n ",string);
     removeCharacter(string, character);
 }
