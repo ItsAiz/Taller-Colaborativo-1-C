@@ -58,13 +58,16 @@ void deleteCharactersRightOrLeft(){
     int option=0;
     char string[100];
     char stringTwo[100];
-    printf("---------------Borrar caracteres izquierda o derecha---------------\n");
-    printf("Digite una cadena: \n");
-    fgets(string,100,stdin);
-    printf("Digite una segunda cadena: \n");
-    fgets(stringTwo,100,stdin);
-    printf("Digite 1.Derecha 2.Izquierda\n");
-    scanf("%d",&option);
+    do{
+        printf("---------------Borrar caracteres izquierda o derecha---------------\n");
+        printf("Digite una cadena: \n");
+        fgets(string,100,stdin);
+        printf("Digite una segunda cadena: \n");
+        fgets(stringTwo,100,stdin);
+        printf("Digite 1.Derecha 2.Izquierda\n");
+        scanf("%d",&option);
+        fflush(stdin);
+    }while (strlen(string)==1 || strlen(stringTwo)==1 || option!=1 || option!=2);
     if(option==1){
         deleteCharactersRight(string,stringTwo);
     }else if(option==2){
