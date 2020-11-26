@@ -100,6 +100,32 @@ void deleteCharacter(){
     printf("Cadena inicial: %s\n ",string);
     removeCharacter(string, character);
 }
+
+void wordCounter(){
+    int counter = 0;
+    char message[100];
+    char word;
+    printf("---------------Contar cantidad de palabras---------------\n");
+    printf("Digite un mensaje:\n");
+    fgets(message,100,stdin);
+    printf("Digite la palabra que desea buscar:\n");
+    scanf("%c", &word);
+    for (int i = 0; i < sizeof(message)/sizeof(*message); ++i) {
+        if (message[i]==word){
+            counter++;
+        }
+    }
+    printf("La palabra - %c - esta %d en el mensaje: %s\n",word,counter,*message);
+}
+
+void fillCharacterRL(){
+
+}
+
+void messagesDifference(){
+
+}
+
 void mainMenu(){
     char *menu="\n---------------Taller---------------\n "
                "1.Convertir nombre propio\n "
@@ -122,7 +148,8 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 2 :;
+            case 2 :
+                wordCounter("hola que hace","c");
                 system("coming soon");
                 break;
 
@@ -135,7 +162,8 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 5 :;
+            case 5 :
+                fillCharacterRL();
                 system("coming soon");
                 break;
 
@@ -147,7 +175,8 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 8 :;
+            case 8 :
+                messagesDifference();
                 system("coming soon");
                 break;
 
