@@ -160,6 +160,7 @@ void mainMenu(){
 }
 int main() {
     printf("Soy Freddy");
+    printf("Y tambien Esteban");
     mainMenu();
     return 0;
 }
