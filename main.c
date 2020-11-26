@@ -159,6 +159,7 @@ void mainMenu(){
     printf("Cerrando ...");
 }
 int main() {
+    printf("Soy Freddy");
     mainMenu();
     return 0;
 }
