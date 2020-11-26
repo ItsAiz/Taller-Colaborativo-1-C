@@ -197,7 +197,7 @@ void mainMenu(){
 }
 int main() {
     printf("Rama ivan");
-    printf("Cambio nuevo");
+    printf("Cambio Dos");
     mainMenu();
     return 0;
 }
