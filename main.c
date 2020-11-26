@@ -27,7 +27,6 @@ void encrypted(char *string){
     for (int i = 0; i <strlen(string)-1; ++i) {
         if(verifMin(string[i])!=60 ){
             posi=verifMin(string[i]);
-            printf("%d\n",posi);
             sEnctrypted[k]=enc[posi];
             k++;
         }else{
@@ -69,11 +68,9 @@ void deleteCharactersLeft(char *string,const char *stringTwo){
         }
     }
     if(accumulator>0){
-        for (int i = 0; i <strlen(string); ++i) {
-            if(string[i]!=' '){
-                res[k]=string[i];
-                k++;
-            }
+        for (int i = accumulator; i <strlen (string); ++i) {
+            res[k]=string[i];
+            k++;
         }
         res[k]='\0';
         printf("%s\n",res);
