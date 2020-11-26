@@ -2,20 +2,57 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
-int encrypted(char string[]){
-
+char charCtersM[]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R'
+,'S','T','V','W','X','Y','Z'};
+char charCters[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r'
+        ,'s','t','v','w','x','y','z'};
+char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
+        ,':','.',',',';','<','>',' '};
+int verifMin(char character){
+    int j=-1,k=0;
+    for (int i = 0; i < strlen(charCters); ++i) {
+        if(charCters[i]==character || charCtersM[k]==character){
+            j=0;
+            j=i;
+            break;
+        }
+        k++;
+    }
+   // printf("El valor de j  es %d \n",j);
+    return j!=-1?j:60;
+}
+void encrypted(char *string){
+    char sEnctrypted[100];
+    int k=0,posi=0;
+    for (int i = 0; i <strlen(string)-1; ++i) {
+        if(verifMin(string[i])!=60 ){
+            posi=verifMin(string[i]);
+            printf("%d\n",posi);
+            sEnctrypted[k]=enc[posi];
+            k++;
+        }else{
+            sEnctrypted[k]=string[i];
+            k++;
+        }
+    }
+    sEnctrypted[k]='\0';
+    printf("La cadena enctriptada es: %s\n",sEnctrypted);
 }
 void encryptString(){
-    char string[4];
+    char string[100];
+    int numb=0;
+    printf("---------------Encriptar cadena---------------\n");
     printf("Digite lo que quiere encriptar \n");
-    scanf("%s",&string);
+    fgets(string,100,stdin);
+    encrypted(string);
 }
 
 int coincidence(char character,const char *stringTwo){
     int accumulator=0;
-    for (int i = 0; i <strlen(stringTwo); ++i) {
+    for (int i = 0; i < strlen(stringTwo);++i) {
         if(character==stringTwo[i]){
             accumulator++;
+            i++;
         }
     }
     return accumulator > 0 ? 1 : 0;
@@ -67,7 +104,7 @@ void deleteCharactersRightOrLeft(){
         printf("Digite 1.Derecha 2.Izquierda\n");
         scanf("%d",&option);
         fflush(stdin);
-    }while (strlen(string)==1 || strlen(stringTwo)==1 || option!=1 || option!=2);
+    }while (strlen(string)>1 && strlen(stringTwo)>1 && option==1 && option==2);
     if(option==1){
         deleteCharactersRight(string,stringTwo);
     }else if(option==2){
@@ -159,6 +196,7 @@ void mainMenu(){
     printf("Cerrando ...");
 }
 int main() {
+    printf("Rama ivan");
     mainMenu();
     return 0;
 }
