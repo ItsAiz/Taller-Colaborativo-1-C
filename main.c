@@ -103,19 +103,25 @@ void deleteCharacter(){
 
 void wordCounter(){
     int counter = 0;
+    char *aux;
     char message[100];
-    char word;
+    char word[10];
     printf("---------------Contar cantidad de palabras---------------\n");
     printf("Digite un mensaje:\n");
-    fgets(message,100,stdin);
+    gets(message);
     printf("Digite la palabra que desea buscar:\n");
-    scanf("%c", &word);
-    for (int i = 0; i < sizeof(message)/sizeof(*message); ++i) {
-        if (message[i]==word){
+    fflush(stdin);
+    gets(word);
+    aux = strtok(message," ,.:;");
+
+    while (aux != NULL){
+        if (stricmp(aux, word)==0){
             counter++;
         }
+        aux=strtok(NULL," ,.:;");
     }
-    printf("La palabra - %c - esta %d en el mensaje: %s\n",word,counter,*message);
+    fflush(stdin);
+    printf("La palabra - %s - esta %d veces.\n",word,counter);
 }
 
 void fillCharacterRL(){
@@ -149,8 +155,8 @@ void mainMenu(){
                 break;
 
             case 2 :
-                wordCounter("hola que hace","c");
-                system("coming soon");
+                wordCounter();
+                system("pause");
                 break;
 
             case 3 :
