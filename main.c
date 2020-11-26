@@ -123,7 +123,7 @@ void mainMenu(){
                 break;
 
             case 2 :;
-                system("pause");
+                system("coming soon");
                 break;
 
             case 3 :
@@ -136,7 +136,7 @@ void mainMenu(){
                 break;
 
             case 5 :;
-                system("pause");
+                system("coming soon");
                 break;
 
             case 6 :deleteCharacter();
@@ -148,7 +148,7 @@ void mainMenu(){
                 break;
 
             case 8 :;
-                system("pause");
+                system("coming soon");
                 break;
 
             case 9 : deleteCharactersRightOrLeft();
