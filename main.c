@@ -162,7 +162,35 @@ void fillCharacterRL(){
 }
 
 void messagesDifference(){
+    int size1=0;
+    int size2 = 0;
+    short i = 0;
+    char message1[100];
+    char message2[100];
+    printf("---------------Diferencia entre dos cadenas---------------\n");
 
+    printf("Digite el mensaje principal: \n");
+    gets(message1);
+
+    printf("Digite el mensaje guia: \n");
+    gets(message2);
+
+    size1=strlen(message1);
+    size2=strlen(message2);
+    fflush(stdin);
+    while (message1[i]!='\0') {
+        for (int j = 0; j < size2; ++j) {
+            if (message1[i]==message2[j]) {
+                for (int k = i; k < size1 ; ++k) {
+                    message1[k]=message1[k+1];
+                }
+                size1--;
+            }
+        }
+        i++;
+    }
+
+    printf("%s\n",message1);
 }
 
 void mainMenu(){
@@ -217,7 +245,7 @@ void mainMenu(){
 
             case 8 :
                 messagesDifference();
-                system("coming soon");
+                system("pause");
                 break;
 
             case 9 : deleteCharactersRightOrLeft();
