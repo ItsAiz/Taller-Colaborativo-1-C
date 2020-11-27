@@ -2,10 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
-char charCtersM[]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R'
-,'S','T','V','W','X','Y','Z'};
-char charCters[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r'
-        ,'s','t','v','w','x','y','z'};
+char charCtersM[]={"ABCDEFGHIJKLMNOPQRSTVWXYZ"};
+char charCters[]={"abcdefghijklmnopqrstvwxyz"};
 char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
         ,':','.',',',';','<','>',' '};
 int verifMin(char character){
@@ -21,7 +19,7 @@ int verifMin(char character){
    // printf("El valor de j  es %d \n",j);
     return j!=-1?j:60;
 }
-void encrypted(char *string){
+void encrypted(char string[]){
     char sEnctrypted[100];
     int k=0,posi=0;
     for (int i = 0; i <strlen(string)-1; ++i) {
@@ -46,7 +44,7 @@ void encryptString(){
     encrypted(string);
 }
 
-int coincidence(char character,const char *stringTwo){
+int coincidence(char character,char stringTwo[]){
     int accumulator=0;
     for (int i = 0; i < strlen(stringTwo);++i) {
         if(character==stringTwo[i]){
@@ -56,7 +54,7 @@ int coincidence(char character,const char *stringTwo){
     }
     return accumulator > 0 ? 1 : 0;
 }
-void deleteCharactersLeft(char *string,const char *stringTwo){
+void deleteCharactersLeft(char string[],char stringTwo[]){
     int accumulator=0,k=0;
     char res[100];
     for (int j = 0; j <strlen(string)-2 ; ++j) {
@@ -78,7 +76,7 @@ void deleteCharactersLeft(char *string,const char *stringTwo){
         printf("%s \n",string);
     }
 }
-void deleteCharactersRight(char *string,const char *stringTwo){
+void deleteCharactersRight(char string[],char stringTwo[]){
     for (int i = strlen(string)-2; i >= 0; --i) {
         if(coincidence(string[i],stringTwo)==1){
             string[i]=' ';
