@@ -18,15 +18,36 @@ int compare(char caden[], char letras){
     return comparar;
 
 }
-int coincidence(char character,char stringTwo[]){
-    int accumulator=0;
-    for (int i = 0; i < strlen(stringTwo);++i) {
-        if(character==stringTwo[i]){
+int coincidence(char character,char stringTwo[]) {
+    int accumulator = 0;
+    for (int i = 0; i < strlen(stringTwo); ++i) {
+        if (character == stringTwo[i]) {
             accumulator++;
             i++;
         }
     }
-    return accumulator > 0 ? 1 : 0;
+}
+void wordCounter(){
+    int counter = 0;
+    char *aux;
+    char message[100];
+    char word[10];
+    printf("---------------Contar cantidad de palabras---------------\n");
+    printf("Digite un mensaje:\n");
+    gets(message);
+    printf("Digite la palabra que desea buscar:\n");
+    fflush(stdin);
+    gets(word);
+    aux = strtok(message," ,.:;");
+
+    while (aux != NULL){
+        if (stricmp(aux, word)==0){
+            counter++;
+        }
+        aux=strtok(NULL," ,.:;");
+    }
+    fflush(stdin);
+    printf("La palabra - %s - esta %d veces.\n",word,counter);
 }
 int verifMin(char character){
     int j=-1,k=0;
@@ -181,27 +202,26 @@ void deleteCharactersRight(char string[],char stringTwo[]){
     }
     printf("%s\n",string);
 }
-void deleteCharactersRightOrLeft(){
-    int option=0;
+void deleteCharactersRightOrLeft() {
+    int option = 0;
     char string[100];
     char stringTwo[100];
-    do{
+    do {
         printf("---------------Borrar caracteres izquierda o derecha---------------\n");
         printf("Digite una cadena: \n");
-        fgets(string,100,stdin);
+        fgets(string, 100, stdin);
         printf("Digite una segunda cadena: \n");
-        fgets(stringTwo,100,stdin);
+        fgets(stringTwo, 100, stdin);
         printf("Digite 1.Derecha 2.Izquierda\n");
-        scanf("%d",&option);
+        scanf("%d", &option);
         fflush(stdin);
-    }while (strlen(string)>1 && strlen(stringTwo)>1 && option==1 && option==2);
-    if(option==1){
-        deleteCharactersRight(string,stringTwo);
-    }else if(option==2){
-        deleteCharactersLeft(string,stringTwo);
+    } while (strlen(string) > 1 && strlen(stringTwo) > 1 && option == 1 && option == 2);
+    if (option == 1) {
+        deleteCharactersRight(string, stringTwo);
+    } else if (option == 2) {
+        deleteCharactersLeft(string, stringTwo);
     }
-}
-void removeCharacter(const char *string, char character){
+}void removeCharacter(const char *string, char character){
     int j=0;
     char stringTw[strlen(string)];
     for (int i = 0; i < strlen(string); ++i) {
@@ -227,6 +247,75 @@ void deleteCharacter(){
     printf("Cadena inicial: %s\n ",string);
     removeCharacter(string, character);
 }
+void fillCharacterRL(){
+    char message[100];
+    char *aux;
+    char character[10];
+    int nTimes = 0;
+    int direction = 0;
+
+    printf("---------------Llenar caracteres por izquierda o derecha---------------\n");
+
+    printf("Digite un mensaje:\n");
+    gets(message);
+
+    printf("Digite el caracter que desea concatenar:\n");
+    scanf("%c",character);
+
+    printf("Digite el numero de veces que desea concatenar el caracter:\n");
+    scanf("%d",&nTimes);
+
+    printf("Digite 1 para insertar por derecha o 2 para insertar por izquierda: \n");
+    scanf("%d", &direction);
+
+    fflush(stdin);
+
+    aux=character;
+
+    strncat(aux,character,(nTimes-1));
+
+    if (direction==1){
+        strcat(message,aux);
+        printf("%s\n",message);
+    }else{
+        strcat(aux,message);
+        printf("%s\n",aux);
+    }
+
+}
+
+void messagesDifference() {
+    int size1;
+    int size2;
+    short i = 0;
+    char message1[100];
+    char message2[100];
+    printf("---------------Diferencia entre dos cadenas---------------\n");
+
+    printf("Digite el mensaje principal: \n");
+    gets(message1);
+
+    printf("Digite el mensaje guia: \n");
+    gets(message2);
+
+    size1=strlen(message1);
+    size2=strlen(message2);
+    fflush(stdin);
+    while (message1[i]!='\0') {
+        for (int j = 0; j < size2; ++j) {
+            if (message1[i]==message2[j] || message1[i]==message2[j]-32 || message1[i]-32==message2[j]) {
+                for (int k = i; k < size1 ; ++k) {
+                    message1[k]=message1[k+1];
+                }
+                size1--;i--;
+            }
+        }
+        i++;
+    }
+
+    printf("%s\n",message1);
+}
+
 void mainMenu(){
     char *menu="\n---------------Taller---------------\n "
                "1.Convertir nombre propio\n "
@@ -249,7 +338,7 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 2 :;
+            case 2 :wordCounter();
                 system("pause");
                 break;
 
@@ -262,7 +351,7 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 5 :;
+            case 5 :fillCharacterRL();
                 system("pause");
                 break;
 
@@ -274,7 +363,7 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 8 :;
+            case 8 :messagesDifference();
                 system("pause");
                 break;
 
@@ -285,6 +374,7 @@ void mainMenu(){
     }while(option!=10);
     printf("Cerrando ...");
 }
+
 int main() {
     mainMenu();
     return 0;
