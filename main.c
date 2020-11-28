@@ -5,7 +5,7 @@
 char charCtersM[]={"ABCDEFGHIJKLMNOPQRSTVWXYZ"};
 char charCters[]={"abcdefghijklmnopqrstvwxyz"};
 char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
-        ,':','.',',',';','<','>',' '};
+        ,':','.',',',';','<','>','0'};
 char stringEncrypted[100];
 int compare(char caden[], char letras){
     int comparar=0;
