@@ -1,11 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 char charCtersM[]={"ABCDEFGHIJKLMNOPQRSTVWXYZ"};
 char charCters[]={"abcdefghijklmnopqrstvwxyz"};
 char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
         ,':','.',',',';','<','>',' '};
+int coincidence(char character,char stringTwo[]){
+    int accumulator=0;
+    for (int i = 0; i < strlen(stringTwo);++i) {
+        if(character==stringTwo[i]){
+            accumulator++;
+            i++;
+        }
+    }
+    return accumulator > 0 ? 1 : 0;
+}
 int verifMin(char character){
     int j=-1,k=0;
     for (int i = 0; i < strlen(charCters); ++i) {
@@ -44,16 +53,6 @@ void encryptString(){
     encrypted(string);
 }
 
-int coincidence(char character,char stringTwo[]){
-    int accumulator=0;
-    for (int i = 0; i < strlen(stringTwo);++i) {
-        if(character==stringTwo[i]){
-            accumulator++;
-            i++;
-        }
-    }
-    return accumulator > 0 ? 1 : 0;
-}
 void deleteCharactersLeft(char string[],char stringTwo[]){
     int accumulator=0,k=0;
     char res[100];
