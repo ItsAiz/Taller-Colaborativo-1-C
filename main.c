@@ -21,7 +21,7 @@ int compare(char caden[], char letras){
 int coincidence(char character,char stringTwo[]){
     int accumulator=0;
     for (int i = 0; i < strlen(stringTwo);++i) {
-        if(character==stringTwo[i]){
+        if(character==stringTwo[i] || character==stringTwo[i]-32){
             accumulator++;
             i++;
         }
