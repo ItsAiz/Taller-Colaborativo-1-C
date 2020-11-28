@@ -6,6 +6,7 @@ char charCtersM[]={"ABCDEFGHIJKLMNOPQRSTVWXYZ"};
 char charCters[]={"abcdefghijklmnopqrstvwxyz"};
 char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
         ,':','.',',',';','<','>',' '};
+char stringEncrypted[100];
 int compare(char caden[], char letras){
     int comparar=0;
     for (int k=0; k<strlen(caden); k++){
@@ -84,6 +85,43 @@ void intersection(){
     printf("La interseccion es ");
     printf("%s\n",interseccion);
 }
+int compareCharacters(char letras){
+    int j=-1,k=0;
+    for (int i = 0; i < strlen(charCters); ++i) {
+        if(enc[i] == letras || enc[k] == letras){
+            j=0;
+            j=i;
+            break;
+        }
+        k++;
+    }
+    // printf("El valor de j  es %d \n",j);
+    return j!=-1?j:60;
+}
+void stringDecrypt(){
+    if(strlen(stringEncrypted)>1){
+        char paraDesencriptar[100];
+        int k=0,posicion=0;
+        for (int i = 0; i < strlen(stringEncrypted); ++i) {
+            if(compareCharacters(stringEncrypted[i]) != 60 ){
+                posicion= compareCharacters(stringEncrypted[i]);
+                //printf("%d\n",posicion);
+                paraDesencriptar[k]=charCtersM[posicion];
+                k++;
+
+            }else{
+                paraDesencriptar[k]=stringEncrypted[i];
+                k++;
+
+            }
+        }
+        paraDesencriptar[k]='\0';
+
+        printf("La cadena desenctriptada es: %s\n", paraDesencriptar);
+    } else{
+        printf("Debe primero hacer la encriptacion de una cadena");
+    }
+}
 void encrypted(char string[]){
     char sEnctrypted[100];
     int k=0,posi=0;
@@ -99,10 +137,11 @@ void encrypted(char string[]){
     }
     sEnctrypted[k]='\0';
     printf("La cadena enctriptada es: %s\n",sEnctrypted);
+    strcpy(stringEncrypted,sEnctrypted);
+
 }
 void encryptString(){
     char string[100];
-    int numb=0;
     printf("---------------Encriptar cadena---------------\n");
     printf("Digite lo que quiere encriptar \n");
     fgets(string,100,stdin);
@@ -218,7 +257,7 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 4 :;
+            case 4 :stringDecrypt();
                 system("pause");
                 break;
 
