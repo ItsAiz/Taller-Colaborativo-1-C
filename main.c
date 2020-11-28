@@ -81,11 +81,11 @@ void messagesDifference() {
     fflush(stdin);
     while (message1[i]!='\0') {
         for (int j = 0; j < size2; ++j) {
-            if (message1[i]==message2[j]) {
+            if (message1[i]==message2[j] || message1[i]==message2[j]-32 || message1[i]-32==message2[j]) {
                 for (int k = i; k < size1 ; ++k) {
                     message1[k]=message1[k+1];
                 }
-                size1--;i--;
+                i--;
             }
         }
         i++;
