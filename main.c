@@ -62,7 +62,7 @@ void fillCharacterRL(){
 
 }
 
-void messagesDifference(){
+void messagesDifference() {
     int size1;
     int size2;
     short i = 0;
@@ -85,7 +85,7 @@ void messagesDifference(){
                 for (int k = i; k < size1 ; ++k) {
                     message1[k]=message1[k+1];
                 }
-                size1--;
+                size1--;i--;
             }
         }
         i++;
