@@ -274,7 +274,9 @@ void fillCharacterRL(){
 
     aux=character;
 
-    strncat(aux,character,(nTimes-1));
+    for (int i = 0; i < nTimes; ++i) {
+        aux[i]=*character;
+    }
 
     if (direction==1){
         strcat(message,aux);
