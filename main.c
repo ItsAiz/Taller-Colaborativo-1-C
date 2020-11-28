@@ -6,6 +6,17 @@ char charCtersM[]={"ABCDEFGHIJKLMNOPQRSTVWXYZ"};
 char charCters[]={"abcdefghijklmnopqrstvwxyz"};
 char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
         ,':','.',',',';','<','>',' '};
+int compare(char caden[], char letras){
+    int comparar=0;
+    for (int k=0; k<strlen(caden); k++){
+        if (letras == caden[k]){
+            comparar += 1;
+        }
+    }
+
+    return comparar;
+
+}
 int coincidence(char character,char stringTwo[]){
     int accumulator=0;
     for (int i = 0; i < strlen(stringTwo);++i) {
@@ -49,6 +60,29 @@ void ownName() {
     }
     printf("La cadena queda como:");
     printf(" %s ", cadena);
+}
+void intersection(){
+    char cadena1[100], cadena2[100];
+    int i, j;
+    char interseccion[100]="";
+
+    printf("Ingrese una palabra: \n");
+    fgets(cadena1, 100, stdin);
+    printf("Ingrese otra palabra: \n");
+    fgets(cadena2, 100, stdin);
+
+    for (i = 0; i < (strlen(cadena1)-1); i++) {
+        for (j = 0; j < (strlen(cadena2)-1); j++) {
+            if (cadena1[i] == cadena2[j]) {
+                if(compare(interseccion, cadena1[i]) == 0){
+                    interseccion[strlen(interseccion)] = cadena1[i];
+                }
+            }
+        }
+    }
+    printf("\n");
+    printf("La interseccion es ");
+    printf("%s\n",interseccion);
 }
 void encrypted(char string[]){
     char sEnctrypted[100];
@@ -196,7 +230,7 @@ void mainMenu(){
                 system("pause");
                 break;
 
-            case 7 :;
+            case 7 :intersection();
                 system("pause");
                 break;
 
