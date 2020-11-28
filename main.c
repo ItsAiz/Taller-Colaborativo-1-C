@@ -85,7 +85,7 @@ void messagesDifference() {
                 for (int k = i; k < size1 ; ++k) {
                     message1[k]=message1[k+1];
                 }
-                i--;
+                size1--;i--;
             }
         }
         i++;
