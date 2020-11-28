@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 char charCtersM[]={"ABCDEFGHIJKLMNOPQRSTVWXYZ"};
 char charCters[]={"abcdefghijklmnopqrstvwxyz"};
 char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
@@ -27,6 +28,27 @@ int verifMin(char character){
     }
    // printf("El valor de j  es %d \n",j);
     return j!=-1?j:60;
+}
+void ownName() {
+
+    int i;
+    char cadena[150];
+
+    printf("Ingrese la cadena de texto dejando un espacio inicial: \n" );
+
+    gets(cadena);
+
+    for(i=0; cadena[i]; i++){
+
+        if(cadena[i - 1] == ' '){
+            cadena[i] = toupper(cadena[i]);
+        }
+        else{
+            cadena[i] = tolower(cadena[i]);
+        }
+    }
+    printf("La cadena queda como:");
+    printf(" %s ", cadena);
 }
 void encrypted(char string[]){
     char sEnctrypted[100];
@@ -149,7 +171,7 @@ void mainMenu(){
         scanf("%d",&option);
         fflush(stdin);
         switch (option) {
-            case 1 :;
+            case 1 :ownName();
                 system("pause");
                 break;
 
