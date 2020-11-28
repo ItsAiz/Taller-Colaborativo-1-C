@@ -18,14 +18,15 @@ int compare(char caden[], char letras){
     return comparar;
 
 }
-int coincidence(char character,char stringTwo[]) {
-    int accumulator = 0;
-    for (int i = 0; i < strlen(stringTwo); ++i) {
-        if (character == stringTwo[i]) {
+int coincidence(char character,char stringTwo[]){
+    int accumulator=0;
+    for (int i = 0; i < strlen(stringTwo);++i) {
+        if(character==stringTwo[i]){
             accumulator++;
             i++;
         }
     }
+    return accumulator > 0 ? 1 : 0;
 }
 void wordCounter(){
     int counter = 0;
@@ -202,26 +203,27 @@ void deleteCharactersRight(char string[],char stringTwo[]){
     }
     printf("%s\n",string);
 }
-void deleteCharactersRightOrLeft() {
-    int option = 0;
+void deleteCharactersRightOrLeft(){
+    int option=0;
     char string[100];
     char stringTwo[100];
-    do {
+    do{
         printf("---------------Borrar caracteres izquierda o derecha---------------\n");
         printf("Digite una cadena: \n");
-        fgets(string, 100, stdin);
+        fgets(string,100,stdin);
         printf("Digite una segunda cadena: \n");
-        fgets(stringTwo, 100, stdin);
+        fgets(stringTwo,100,stdin);
         printf("Digite 1.Derecha 2.Izquierda\n");
-        scanf("%d", &option);
+        scanf("%d",&option);
         fflush(stdin);
-    } while (strlen(string) > 1 && strlen(stringTwo) > 1 && option == 1 && option == 2);
-    if (option == 1) {
-        deleteCharactersRight(string, stringTwo);
-    } else if (option == 2) {
-        deleteCharactersLeft(string, stringTwo);
+    }while (strlen(string)>1 && strlen(stringTwo)>1 && option==1 && option==2);
+    if(option==1){
+        deleteCharactersRight(string,stringTwo);
+    }else if(option==2){
+        deleteCharactersLeft(string,stringTwo);
     }
-}void removeCharacter(const char *string, char character){
+}
+void removeCharacter(const char *string, char character){
     int j=0;
     char stringTw[strlen(string)];
     for (int i = 0; i < strlen(string); ++i) {
