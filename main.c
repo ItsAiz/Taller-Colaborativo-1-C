@@ -251,7 +251,7 @@ void deleteCharacter(){
 }
 void fillCharacterRL(){
     char message[100];
-    char *aux;
+    char aux[100];
     char character[10];
     int nTimes = 0;
     int direction = 0;
@@ -272,12 +272,12 @@ void fillCharacterRL(){
 
     fflush(stdin);
 
-    aux=character;
+    *aux=*character;
 
-    for (int i = 0; i < nTimes; ++i) {
-        aux[i]=*character;
+    for (int i = 0; i < nTimes-1; ++i) {
+        aux[i] = *character;
     }
-
+    strcat(aux,character);
     if (direction==1){
         strcat(message,aux);
         printf("%s\n",message);
