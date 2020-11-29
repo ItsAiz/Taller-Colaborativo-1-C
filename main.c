@@ -297,7 +297,6 @@ void messagesDifference() {
     short i = 0;
     char message1[100];
     char message2[100];
-    printf("%d\n%d",strlen(message1),strlen(message2));
     do{
         printf("---------------Diferencia entre dos cadenas---------------\n");
 
