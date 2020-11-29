@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+
 char charCtersM[]={"ABCDEFGHIJKLMNOPQRSTVWXYZ"};
 char charCters[]={"abcdefghijklmnopqrstvwxyz"};
 char enc[]={'|','"','@','#','%','&','/','(',')','*','=','?','+','-','}','{','[',']'
@@ -33,12 +34,14 @@ void wordCounter(){
     char *aux;
     char message[100];
     char word[10];
-    printf("---------------Contar cantidad de palabras---------------\n");
-    printf("Digite un mensaje:\n");
-    gets(message);
-    printf("Digite la palabra que desea buscar:\n");
-    fflush(stdin);
-    gets(word);
+    do{
+        printf("---------------Contar cantidad de palabras---------------\n");
+        printf("Digite un mensaje:\n");
+        gets(message);
+        printf("Digite la palabra que desea buscar:\n");
+        gets(word);
+        fflush(stdin);
+    }while (strlen(message)==0 && word!=NULL);
     aux = strtok(message," ,.:;");
 
     while (aux != NULL){
@@ -64,14 +67,12 @@ int verifMin(char character){
     return j!=-1?j:60;
 }
 void ownName() {
-
     int i;
     char cadena[150];
-
-    printf("Ingrese la cadena de texto dejando un espacio inicial: \n" );
-
-    gets(cadena);
-
+    do{
+        printf("Ingrese la cadena de texto dejando un espacio inicial: \n" );
+        gets(cadena);
+    }while (strlen(cadena)==0);
     for(i=0; cadena[i]; i++){
 
         if(cadena[i - 1] == ' '){
@@ -165,9 +166,12 @@ void encrypted(char string[]){
 }
 void encryptString(){
     char string[100];
-    printf("---------------Encriptar cadena---------------\n");
-    printf("Digite lo que quiere encriptar \n");
-    fgets(string,100,stdin);
+    do {
+        printf("---------------Encriptar cadena---------------\n");
+        printf("Digite lo que quiere encriptar \n");
+        fgets(string,100,stdin);
+        fflush(stdin);
+    }while (strlen(string)==0);
     encrypted(string);
 }
 
@@ -216,18 +220,18 @@ void deleteCharactersRightOrLeft(){
         printf("Digite 1.Derecha 2.Izquierda\n");
         scanf("%d",&option);
         fflush(stdin);
-    }while (strlen(string)>1 && strlen(stringTwo)>1 && option==1 && option==2);
+    }while (strlen(string)<3 && strlen(stringTwo)<3 || option!=1 && option!=2);
     if(option==1){
         deleteCharactersRight(string,stringTwo);
     }else if(option==2){
         deleteCharactersLeft(string,stringTwo);
     }
 }
-void removeCharacter(const char *string, char character){
+void removeCharacter(char string[], char character){
     int j=0;
     char stringTw[strlen(string)];
     for (int i = 0; i < strlen(string); ++i) {
-        if(string[i]!=character){
+        if(string[i]!=character && string[i]!=character-32){
             stringTw[j]=string[i];
             j++;
         }
@@ -257,19 +261,14 @@ void fillCharacterRL(){
     int direction = 0;
 
     printf("---------------Llenar caracteres por izquierda o derecha---------------\n");
-
     printf("Digite un mensaje:\n");
     gets(message);
-
     printf("Digite el caracter que desea concatenar:\n");
-    scanf("%c",character);
-
+    scanf("%c", character);
     printf("Digite el numero de veces que desea concatenar el caracter:\n");
-    scanf("%d",&nTimes);
-
+    scanf("%d", &nTimes);
     printf("Digite 1 para insertar por derecha o 2 para insertar por izquierda: \n");
     scanf("%d", &direction);
-
     fflush(stdin);
 
     *aux=*character;
@@ -294,14 +293,18 @@ void messagesDifference() {
     short i = 0;
     char message1[100];
     char message2[100];
-    printf("---------------Diferencia entre dos cadenas---------------\n");
+    printf("%d\n%d",strlen(message1),strlen(message2));
+    do{
+        printf("---------------Diferencia entre dos cadenas---------------\n");
 
-    printf("Digite el mensaje principal: \n");
-    gets(message1);
+        printf("Digite el mensaje principal: \n");
+        gets(message1);
 
-    printf("Digite el mensaje guia: \n");
-    gets(message2);
+        printf("Digite el mensaje guia: \n");
+        gets(message2);
 
+        fflush(stdin);
+    }while (strlen(message1)<3 && strlen(message2)<3);
     size1=strlen(message1);
     size2=strlen(message2);
     fflush(stdin);
@@ -318,6 +321,7 @@ void messagesDifference() {
     }
 
     printf("%s\n",message1);
+
 }
 
 void mainMenu(){
