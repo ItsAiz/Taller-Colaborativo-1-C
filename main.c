@@ -85,28 +85,33 @@ void ownName() {
     printf("La cadena queda como:");
     printf(" %s ", cadena);
 }
-void intersection(){
-    char cadena1[100], cadena2[100];
+//cadena1[i]==cadena2[j] || cadena1[i]==cadena2[j]-32 || cadena1[i]-32==cadena2[j]
+void intersection () {
+    char cadena1 [ 100 ], cadena2 [ 100 ];
+    for (int i = 0; i <strlen(cadena2 ); ++i) {
+        char value=tolower(cadena2[i]);
+        cadena2[i]=value;
+    }
     int i, j;
-    char interseccion[100]="";
+    char interseccion [ 100 ] = " " ;
 
-    printf("Ingrese una palabra: \n");
-    fgets(cadena1, 100, stdin);
-    printf("Ingrese otra palabra: \n");
-    fgets(cadena2, 100, stdin);
+    printf ( "Ingrese una palabra: \n " );
+    fgets (cadena1, 100 , stdin);
+    printf ( "Ingrese otra palabra: \n " );
+    fgets (cadena2, 100 , stdin);
 
-    for (i = 0; i < (strlen(cadena1)-1); i++) {
-        for (j = 0; j < (strlen(cadena2)-1); j++) {
-            if (cadena1[i] == cadena2[j]) {
-                if(compare(interseccion, cadena1[i]) == 0){
-                    interseccion[strlen(interseccion)] = cadena1[i];
+    for(i = 0 ; i <( strlen (cadena1) - 1 ); i ++) {
+        for (j = 0 ; j <( strlen (cadena2) - 1 ); j ++) {
+            if (cadena1 [i] == cadena2 [j]) {
+                if ( compare (interseccion, cadena1 [i]) == 0 ) {
+                    interseccion [ strlen (interseccion)] = cadena1 [i];
                 }
             }
         }
     }
-    printf("\n");
-    printf("La interseccion es ");
-    printf("%s\n",interseccion);
+    printf ( " \n " );
+    printf ( "La interseccion es " );
+    printf ( "%s \n " , interseccion);
 }
 int compareCharacters(char letras){
     int j=-1,k=0;
