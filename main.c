@@ -85,7 +85,6 @@ void ownName() {
     printf("La cadena queda como:");
     printf(" %s ", cadena);
 }
-//cadena1[i]==cadena2[j] || cadena1[i]==cadena2[j]-32 || cadena1[i]-32==cadena2[j]
 void intersection () {
     char cadena1 [ 100 ], cadena2 [ 100 ];
     for (int i = 0; i <strlen(cadena2 ); ++i) {
